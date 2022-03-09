@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     let getPersons = async () => {
       await axios
-        .get("http://localhost:3001/api/persons")
+        .get("https://stark-ridge-32063.herokuapp.com/api/persons")
         .then((response) => setPersons(response.data));
     };
     getPersons();
