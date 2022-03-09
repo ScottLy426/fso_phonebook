@@ -17,9 +17,12 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
+    "start": "node index.js",
     "server": "json-server -p3001 --watch db.json",
     "dev": "nodemon ./server/index.js",
-    "deploy:full": "npm run build && git add . && git commit -m build && git push origin master && git push heroku master"
+    "build:ui": "rm -rf build && cd ui && npm run build && cp -r build ../",
+    "build": "git add . && git commit -m uibuild && git push origin master && git push heroku master",
+    "deploy:full": "npm run build:ui && npm run build"
   },
   "browserslist": {
     "production": [
