@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// const baseUrl = "https://stark-ridge-32063.herokuapp.com/api/persons";
-const baseUrl = "http://localhost:3001/api/persons";
+const baseUrl = process.env.production && process.env.development;
 
 const getAll = () => {
   const request = axios.get(baseUrl);
