@@ -18,7 +18,7 @@
   },
   "scripts": {
     "server": "json-server -p3001 --watch db.json",
-    "dev": "nodemon server.js",
+    "dev": "nodemon ./server/index.js",
     "deploy:full": "npm run build && git add . && git commit -m build && git push origin master && git push heroku master"
   },
   "browserslist": {

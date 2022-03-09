@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/ScottLy426/fso_phonebook/issues"
   },
-  "homepage": "https://github.com/ScottLy426/fso_phonebook#readme",
+  "homepage": "./",
   "dependencies": {
     "jest": "^27.5.1",
     "@testing-library/jest-dom": "^5.16.2",
