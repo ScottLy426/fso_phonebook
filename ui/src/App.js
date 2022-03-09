@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import Form from "./components/form";
 import Search from "./components/search";
 import Persons from "./components/persons";

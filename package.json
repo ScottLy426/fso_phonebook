@@ -18,7 +18,7 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "NODE_ENV=production node ./server/index.js",
+    "start": "node ./server/index.js",
     "server": "json-server -p3001 --watch db.json",
     "dev": "NODE_ENV=development nodemon ./server/index.js",
     "build:ui": "rm -rf build && cd ui && npm run build && cp -r build ../",
