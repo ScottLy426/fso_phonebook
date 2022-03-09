@@ -6,7 +6,7 @@ import Persons from "./components/persons";
 import Notification from "./components/notification";
 
 import personService from "./services/persons";
-import axios from "axios";
+
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
@@ -15,13 +15,7 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    let getPersons = async () => {
-      await axios
-        .get("https://stark-ridge-32063.herokuapp.com/api/persons")
-        .then((response) => setPersons(response.data));
-    };
-    getPersons();
-    // personService.getAll().then((response) => setPersons(response));
+    personService.getAll().then((response) => setPersons(response));
   }, []);
 
   let filteredPersons = persons.filter((person) =>

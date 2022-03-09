@@ -50,16 +50,6 @@ app.get("/api/persons", (request, response) => {
   response.send(phonebook);
 });
 
-app.get("/info", (request, response) => {
-  const body = request.body;
-  const date = new Date().toString();
-  const h1 = ` <h1>Phonebook has info for ${phonebook.length} people</>
-    <div>${date}</div>
-  `;
-
-  response.send(h1);
-});
-
 app.get("/api/persons/:id", (request, response) => {
   const id = Number(request.params.id);
   const person = phonebook.find((person) => person.id === id);
@@ -102,6 +92,7 @@ app.delete("/api/persons/:id", (request, response) => {
     response.status(204).end();
   }
 });
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
