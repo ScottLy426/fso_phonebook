@@ -17,7 +17,7 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node ./server/index.js",
     "server": "json-server -p3001 --watch db.json",
     "dev": "nodemon ./server/index.js",
     "build:ui": "rm -rf build && cd ui && npm run build && cp -r build ../ && git add . && git commit -m uibuild && git push origin master && git push heroku master"
