@@ -6,7 +6,7 @@ import Persons from "./components/persons";
 import Notification from "./components/notification";
 
 import personService from "./services/persons";
-
+import axios from "axios";
 const App = () => {
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
@@ -15,7 +15,13 @@ const App = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    personService.getAll().then((response) => setPersons(response));
+    let getPersons = async () => {
+      await axios
+        .get("http://localhost:3001/api/persons")
+        .then((response) => setPersons(response.data));
+    };
+    getPersons();
+    // personService.getAll().then((response) => setPersons(response));
   }, []);
 
   let filteredPersons = persons.filter((person) =>
@@ -24,7 +30,6 @@ const App = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     let isNewName = persons.find((person) => newName === person.name);
     const changedPerson = { ...isNewName, number: newNumber };
 
