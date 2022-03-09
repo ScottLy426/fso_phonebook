@@ -2,10 +2,12 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
+const process = require("process");
 app.use(express.static("build"));
 app.use(express.json());
 
 app.use(cors());
+
 morgan.token("content", (req, res) => {
   let string = JSON.stringify(res.req.body);
   return string;

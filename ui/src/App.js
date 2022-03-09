@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 import Form from "./components/form";
 import Search from "./components/search";
 import Persons from "./components/persons";
@@ -9,6 +9,7 @@ import personService from "./services/persons";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
+  const [filteredPersons, setFilteredPersons] = useState(persons);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [search, setSearch] = useState("");
@@ -18,12 +19,13 @@ const App = () => {
     personService.getAll().then((response) => setPersons(response));
   }, []);
 
-  let filteredPersons = persons.filter((person) =>
-    person.name.toLowerCase().includes(search.toLowerCase())
-  );
+  useEffect(() => {
+    setFilteredPersons(persons);
+  }, [persons]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     let isNewName = persons.find((person) => newName === person.name);
     const changedPerson = { ...isNewName, number: newNumber };
 
@@ -71,7 +73,7 @@ const App = () => {
 
     personService
       .create(newObject)
-      .then((response) => setPersons(persons.concat(response)));
+      .then((response) => setPersons(persons.concat(newObject)));
 
     setError("update");
     setTimeout(() => {
