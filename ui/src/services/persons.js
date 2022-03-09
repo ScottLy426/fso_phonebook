@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.production && process.env.development;
+const baseUrl = process.env.NODE_ENV;
 
 const getAll = () => {
   const request = axios.get(baseUrl);
